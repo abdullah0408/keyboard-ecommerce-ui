@@ -1,0 +1,31 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Mission"
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Cillum tempor ex id Lorem occaecat esse consequat. Qui et cupidatat cillum culpa in commodo esse amet duis culpa do aliquip duis aliquip."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

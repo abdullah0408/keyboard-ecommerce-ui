@@ -69,7 +69,10 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
-type HomepageDocumentDataSlicesSlice = BentoBoxSlice | HeroSlice;
+type HomepageDocumentDataSlicesSlice =
+  | KeyboardColorChangerSlice
+  | BentoBoxSlice
+  | HeroSlice;
 
 /**
  * Content for HomePage documents
@@ -288,6 +291,61 @@ type HeroSliceVariation = HeroSliceDefault;
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
+/**
+ * Primary content in *KeyboardColorChanger → Default → Primary*
+ */
+export interface KeyboardColorChangerSliceDefaultPrimary {
+  /**
+   * Heading field in *KeyboardColorChanger → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: keyboard_color_changer.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Description field in *KeyboardColorChanger → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: keyboard_color_changer.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for KeyboardColorChanger Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type KeyboardColorChangerSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<KeyboardColorChangerSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *KeyboardColorChanger*
+ */
+type KeyboardColorChangerSliceVariation = KeyboardColorChangerSliceDefault;
+
+/**
+ * KeyboardColorChanger Shared Slice
+ *
+ * - **API ID**: `keyboard_color_changer`
+ * - **Description**: KeyboardColorChanger
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type KeyboardColorChangerSlice = prismic.SharedSlice<
+  "keyboard_color_changer",
+  KeyboardColorChangerSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -322,6 +380,10 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      KeyboardColorChangerSlice,
+      KeyboardColorChangerSliceDefaultPrimary,
+      KeyboardColorChangerSliceVariation,
+      KeyboardColorChangerSliceDefault,
     };
   }
 }
