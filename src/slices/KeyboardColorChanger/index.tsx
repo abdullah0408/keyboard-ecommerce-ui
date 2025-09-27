@@ -68,6 +68,7 @@ const KeyboardColorChanger: FC<KeyboardColorChangerProps> = ({ slice }) => {
   function handleTextureSelect(texture: KeycapTexture) {
     if (texture.id === selectedTextureId || isAnimating) return;
 
+    setIsAnimating(true);
     setSelectedTextureId(texture.id);
     setBackgroundText(
       KEYCAP_TEXTURES.find((t) => t.id === texture.id)?.name || ""
@@ -133,6 +134,7 @@ const KeyboardColorChanger: FC<KeyboardColorChangerProps> = ({ slice }) => {
             <li key={texture.id}>
               <button
                 onClick={() => handleTextureSelect(texture)}
+                disabled={isAnimating}
                 className={clsx(
                   "flex aspect-square flex-col items-center justify-center rounded-lg border-2 p-4 hover:scale-105 motion-safe:transition-all motion-safe:duration-300",
                   selectedTextureId === texture.id
